@@ -32,11 +32,10 @@ class TblUser extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('username, password, email', 'required'),
-			array('username, password, email', 'length', 'max'=>128),
-			array('profile', 'safe'),
+			array('username, password, email', 'length', 'max'=>128),			//array('profile', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, password, email, profile', 'safe', 'on'=>'search'),
+			array('id, username, password, email', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,8 +60,7 @@ class TblUser extends CActiveRecord
 			'id' => 'Author Name',
 			'username' => 'Username',
 			'password' => 'Password',
-			'email' => 'Email',
-			'profile' => 'Profile',
+			'email' => 'Email',			//'profile' => 'Profile',
 		);
 	}
 
@@ -88,7 +86,7 @@ class TblUser extends CActiveRecord
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('email',$this->email,true);
-		$criteria->compare('profile',$this->profile,true);
+		//$criteria->compare('profile',$this->profile,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
